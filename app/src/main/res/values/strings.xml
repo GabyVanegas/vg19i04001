@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">vg19i04001</string>
+    <string name="iniciar_juego">Iniciar juego</string>
+    <string name="puntajes">"Puntuaciones"</string>
+    <string name="puntaje_alto">Puntuacion</string>
+    <string name="Confi_juego">Configuracion</string>
+    <string name="guardar_publicacion">Configuraciones</string>
+    <string name="nick_jugador">Nick jugador</string>
+    <string name="facilEntity">Nivel fácil</string>
+    <string name="Medio">Nivel medio</string>
+    <string name="Dificil">Nivel difícil</string>
+    <string name="guardar">Guardar</string>
+    <string name="titulo">Dificultad</string>
+    <string name="num">Ingrese un numero del 1 - 50</string>
+    <string name="iniciar">Iniciar</string>
+    <string name="titulo_medio">Digite numero del (1 - 100)</string>
+    <string name="titulo_dificil">Digite un numero del (1 - 150)</string>
+    <string name="numMedio">Ingrese un numero del 1 - 100</string>
+    <string name="numDificil">Ingrese un numero del 1 al 150</string>
+    <string name="seleccionar_opcion">\"Debe de seleccionar una opcion\"</string>
+    <string name="registrar_nick">Registre su nick por favor</string>
+    <string name="respuesta">Respuesta correcta</string>
+    <string name="numMayor">El numero es mayor</string>
+    <string name="numMenor">El numero es menor</string>
+</resources>

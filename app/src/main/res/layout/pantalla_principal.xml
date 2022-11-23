@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/margin_default">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnIniciarJuego"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/iniciar_juego"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="100dp" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPuntuacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/puntaje_alto"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnIniciarJuego"
+        android:layout_marginTop="100dp"/>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnConfiguracion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Confi_juego"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnPuntuacion"
+        android:layout_marginTop="100dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

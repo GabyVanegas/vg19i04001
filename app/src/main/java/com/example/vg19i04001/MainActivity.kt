@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.vg19i04001.Repository.PuntuacionRepository
 import com.example.vg19i04001.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -13,10 +12,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
     private var tipoDificultad: Int = 0
     private lateinit var nick: String
-    private var respuesta: Int = 0
-    companion object {
-        val puntuacionRepository: PuntuacionRepository = PuntuacionRepository()
-    }
+    private var respuestaC: Int = 0
+    var nFacil = 50
+    var nMedio = 100
+    var nDificil = 150
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -40,25 +40,27 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         Snackbar.LENGTH_SHORT).show()
                 }else{
                     if(tipoDificultad == 1){
-                        respuesta =(Math.random()*50+1).toInt()
+                        respuestaC = (Math.random()* nFacil).toInt() + 1
                         val intent: Intent = Intent(this, InicioJuegoActivity::class.java)
                         intent.putExtra("dificultad", tipoDificultad)
                         intent.putExtra("nick", nick)
-                        intent.putExtra("respuesta", respuesta)
+                        intent.putExtra("respuesta", respuestaC)
                         startActivity(intent)
+
                     }else if(tipoDificultad == 2){
-                        respuesta =(Math.random()*100+1).toInt()
+                        respuestaC =(Math.random()* nMedio).toInt() + 1
                         val intent: Intent = Intent(this, InicioJuegoActivity::class.java)
                         intent.putExtra("dificultad", tipoDificultad)
                         intent.putExtra("nick", nick)
-                        intent.putExtra("respuesta", respuesta)
+                        intent.putExtra("respuesta", respuestaC)
                         startActivity(intent)
+
                     }else if(tipoDificultad == 3){
-                        respuesta =(Math.random()*150+1).toInt()
+                        respuestaC =(Math.random()* nDificil).toInt() + 1
                         val intent: Intent = Intent(this, InicioJuegoActivity::class.java)
                         intent.putExtra("dificultad", tipoDificultad)
                         intent.putExtra("nick", nick)
-                        intent.putExtra("respuesta", respuesta)
+                        intent.putExtra("respuesta", respuestaC)
                         startActivity(intent)
                     }
                 }

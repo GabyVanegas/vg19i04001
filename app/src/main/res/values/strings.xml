@@ -22,4 +22,7 @@
     <string name="respuesta">Respuesta correcta</string>
     <string name="numMayor">El numero es mayor</string>
     <string name="numMenor">El numero es menor</string>
+    <string name="msg_dialog">Guardando... por favor espere</string>
+    <string name="titulo_eliminar">Eliminar</string>
+    <string name="msg_eliminar">¿De verdad desea eliminar?</string>
 </resources>

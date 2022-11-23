@@ -3,8 +3,11 @@ package com.example.vg19i04001
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import com.example.vg19i04001.databinding.ActivityConfiguracionBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -30,38 +33,43 @@ class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
                 // Validar si se ha seleccionado uno de los radiobuttons
                 if((binding.edtNick.text.toString().isNotEmpty())&& !binding.rbtFacil.isChecked
                     && !binding.rbtMedio.isChecked && !binding.rbtDificil.isChecked){
+
                     Snackbar.make(binding.root,R.string.seleccionar_opcion,
                         Snackbar.LENGTH_SHORT).show()
+
                 }else if(binding.rbtFacil.isChecked){
                     if(binding.edtNick.text.toString().isNotEmpty()){
-                        val intent: Intent = Intent(this, InicioJuegoActivity::class.java)
+                        val intent: Intent = Intent(this, MainActivity::class.java)
 
                         intent.putExtra("dificultad", 1)
                         val nick: String = binding.edtNick.text.toString()
                         intent.putExtra("nick", nick)
                         startActivity(intent)
+                        configProgressDialog()
                     }
                 }
                 else if(binding.rbtMedio.isChecked){
                     if(binding.edtNick.text.toString().isNotEmpty()){
-                        val intent: Intent = Intent(this, InicioJuegoActivity::class.java)
+                        val intent: Intent = Intent(this, MainActivity::class.java)
 
                         intent.putExtra("dificultad", 2)
                         val nick: String = binding.edtNick.text.toString()
                         intent.putExtra("nick", nick)
                         startActivity(intent)
+                        configProgressDialog()
                     }
-                }
-                else if(binding.rbtDificil.isChecked){
+                } else{
                     if(binding.edtNick.text.toString().isNotEmpty()){
-                        val intent: Intent = Intent(this, InicioJuegoActivity::class.java)
+                        val intent: Intent = Intent(this, MainActivity::class.java)
 
                         intent.putExtra("dificultad", 3)
                         val nick: String = binding.edtNick.text.toString()
                         intent.putExtra("nick", nick)
                         startActivity(intent)
+                        configProgressDialog()
                     }
                 }
+
             }
         }
     }
@@ -71,9 +79,23 @@ class ConfiguracionActivity : AppCompatActivity(), View.OnClickListener {
         when(item.itemId){
             android.R.id.home -> {
                 // Debe permitir regresar a la actividad anterior
-                onBackPressed()
+                finish()
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    fun configProgressDialog(){
+        val alertBuilder: AlertDialog.Builder = AlertDialog.Builder(this)
+        val dialogView = layoutInflater.inflate(R.layout.progress_dialog, null)
+        alertBuilder.setView(dialogView)
+        alertBuilder.setCancelable(false)
+        val dialog = alertBuilder.create()
+        dialog.show()
+        // Configurando hilo, para asignar tiempo
+        Handler(Looper.getMainLooper()).postDelayed({
+            dialog.dismiss()
+            finish()
+        }, 3000)
     }
 }

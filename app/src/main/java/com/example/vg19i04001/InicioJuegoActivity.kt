@@ -1,5 +1,6 @@
 package com.example.vg19i04001
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.icu.number.IntegerWidth
 import androidx.appcompat.app.AppCompatActivity
@@ -23,6 +24,8 @@ class InicioJuegoActivity : AppCompatActivity(), View.OnClickListener {
     private var respuesta: Int = 0
     private var respuestaC: Int = 0
     private lateinit var nick: String
+
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInicioJuegoBinding.inflate(layoutInflater)
@@ -31,14 +34,18 @@ class InicioJuegoActivity : AppCompatActivity(), View.OnClickListener {
         // Habilitar action bar
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         title = "Inicio del juego"
+
         tipodificultad = intent.extras!!.getInt("dificultad")
         nick = intent.extras!!.getString("nick").toString()
         respuestaC = intent.extras!!.getInt("respuesta")
 
+
+
         binding.txvIntentos.text = "Numero de intentos: $numIntentos"
         binding.tvxnick.text = "nick: $nick"
-        binding.tvxPuntuacion.text = "Su puntuacion es: $numPuntaje"
-        binding.tvxRespuesta.text = ""
+
+
+        binding.btnIniciar.setOnClickListener(this)
 
         if(tipodificultad == 1){
             binding.txvTipodificultad.text = "Dificultad fácil"
@@ -58,7 +65,7 @@ class InicioJuegoActivity : AppCompatActivity(), View.OnClickListener {
             binding.tvxnumMedio.visibility = View.GONE
         }
 
-        binding.btnIniciar.setOnClickListener(this)
+
     }
 
     override fun onClick(p0: View?){

@@ -111,7 +111,7 @@ class InicioJuegoActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 if(tipodificultad == 2) {
-                    if (binding.edtNum.text.toString().isNotEmpty()) {
+                    if (binding.edtNumMedio.text.toString().isNotEmpty()) {
                         respuesta = Integer.parseInt(binding.edtNumMedio.text.toString())
 
                         if(respuesta == respuestaC){
@@ -150,13 +150,14 @@ class InicioJuegoActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 if(tipodificultad == 3) {
-                    if (binding.edtNum.text.toString().isNotEmpty()) {
+                    if (binding.edtNumDificil.text.toString().isNotEmpty()) {
                         respuesta = Integer.parseInt(binding.edtNumDificil.text.toString())
 
                         if(respuesta == respuestaC){
                             doAsync {
                                 PuntuacionApplication.database.getPuntuacionDao().addPuntuacion(
-                                    PuntuacionEntity(nick = nick,
+                                    PuntuacionEntity(
+                                        nick = nick,
                                         puntaje = numIntentos.toString())
                                 )
                                 uiThread {

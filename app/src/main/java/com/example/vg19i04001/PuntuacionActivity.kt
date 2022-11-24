@@ -17,8 +17,8 @@ import org.jetbrains.anko.uiThread
 class PuntuacionActivity : AppCompatActivity(), IOnClickListener {
     private lateinit var binding: ActivityPuntuacionBinding
     private lateinit var recyclerView: RecyclerView
+    private val linearManager = LinearLayoutManager(this)
     private lateinit var puntuacionAdapter: PuntuacionAdapter
-    private lateinit var linearLayoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +33,18 @@ class PuntuacionActivity : AppCompatActivity(), IOnClickListener {
 
         configRecyclerView()
     }
+    private fun configRecyclerView(){
+
+        puntuacionAdapter = PuntuacionAdapter(lstPuntuacion =  mutableListOf(), this)
+
+        getPuntuaciones()
+
+        binding.rcPuntuaciones.setHasFixedSize(true)
+        binding.rcPuntuaciones.layoutManager = linearManager
+        binding.rcPuntuaciones.adapter = puntuacionAdapter
+
+    }
+
     private fun getPuntuaciones(){
         doAsync {
             val puntuacion = PuntuacionApplication.database.getPuntuacionDao().getAllPuntaje()
@@ -42,17 +54,7 @@ class PuntuacionActivity : AppCompatActivity(), IOnClickListener {
         }
     }
     // Método que configura el recyclerview
-    fun configRecyclerView(){
 
-        puntuacionAdapter = PuntuacionAdapter(lstPuntuacion =  mutableListOf(), this)
-
-        getPuntuaciones()
-
-            binding.rcPuntuaciones.setHasFixedSize(true)
-            binding.rcPuntuaciones.layoutManager = linearLayoutManager
-            binding.rcPuntuaciones.adapter = puntuacionAdapter
-
-    }
 
     //Método que configura el action bar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
